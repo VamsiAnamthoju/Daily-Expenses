@@ -1,0 +1,82 @@
+<h6 style="text-align: center;">bind-data-to-usermodel works!</h6>
+
+<h4 style="text-align: center;">Registration form</h4>
+<div class="container-fluid">
+<form action="" #myform ="ngForm">
+<div class="row">
+          <div class="col-6">
+                <div class="form-group mb-3">
+                    <label for="">UserName : &nbsp;</label>
+                    <input type="text" class="form-control"  [class.is-invalid]="hello.invalid && hello.touched" #hello="ngModel" name="UserName" id="" placeholder="UserName" [(ngModel)]="userModel.UserName" required>
+                    <small class="text-danger" [class.d-none]="hello.valid || hello.untouched">Username is Required</small>
+                
+                    <!-- <div *ngIf="hello.errors && (hello.touched || hello.invalid)">
+                        <small class="text-danger" *ngIf="hello.errors.required">Username is required</small>
+                        <small class="text-danger" *ngIf="hello.errors.maxlength">Max length is invalid</small>
+                     </div> -->
+                </div>
+                
+                <div class="form-group mb-3">
+                    <label for="">Email : &nbsp;</label>
+                    <input type="email" #email="ngModel" [class.is-invalid]="email.invalid&&email.touched"  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" class="form-control" name="email" id="" placeholder="Email" [(ngModel)]="userModel.email" required >
+                    <div *ngIf="email.errors && (email.invalid || email.touched)" >
+                        <small class="text-danger" *ngIf="email.errors.required">Email is required</small>
+                        <small class="text-danger" *ngIf="email.errors.pattern"> Invalid pattern</small>
+                    </div>
+                </div>  
+
+                <div class="form-group">
+                    <label for="">Designation : &nbsp;</label>
+                    <input type="text"  [class.is-invalid]="" #designation="ngModel" class="form-control" name="Designation" id="" placeholder="Designation" [(ngModel)]="userModel.designation" required>
+                    <small class="text-danger" [class.d-none]="designation.valid || designation.untouched">Optional designation</small>
+                </div>
+          </div>    
+
+
+          <div class="col-6">
+                <div class="form-group">
+                    <label class="mt-3">I am intrested in : </label>
+                    <select  class="custom-select" id="inputGroupSelection01" name="course" [(ngModel)]="userModel.course">
+                        <option  disabled selected>Choose...</option>
+                        <option  *ngFor="let x of course"> {{ x }}</option>
+                    </select>
+                </div>
+
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input mt-3" id="CustomcheckDisabled1" name="remember" checked [(ngModel)]="userModel.remember">
+                    <label for="CustomcheckDisabled1" class="custom-control-label">Remember Me</label>
+                </div>
+          </div>
+
+    </div>
+<button type="submit" class="btn btn-primary mt-3">Register</button>
+</form>
+<div class="myformData">{{ myform.value | json }}</div>
+   <div class="myformData">{{ userModel | json }}</div>
+
+
+
+
+<!-- <small >{{ demo }}</small> -->
+
+
+<!-- <label for="">Gender :</label>
+                <div class="form-group">
+                    <input mdbRadio type="radio" name="customRadioInline1" id="customRadioInline1" class="custom-control-input" ngModel>
+                    <label  class="custom-control-label" name="male">Male</label>
+                </div>
+                <div class="custom-control">
+                    <input mdbRadio type="radio" name="customRadioInline2" id="customRadioInline2" class="custom-control-input" ngModel>
+                    <label  class="custom-control-label">Female</label>
+                </div> -->
+<!-- 
+                <div class="col-6"> -->
+                    <!-- <label for="">Gender :</label>
+                    <div class="form-check custom-control custom-radio custom-control-inline">
+                        <input mdbRadio type="radio" name="flexRadioDefault" id="flexRadioDefault1" class="form-check-input" >
+                        <label for="customRadioInline1" class="form-check-label" >Male</label>
+                    </div>
+                    <div class="form-check">
+                        <input mdbRadio type="radio" name="flexRadioDefault" id="customRadioInline2" class="form-check-input" [checked]="true">
+                        <label for="flexRadioDefault2" class="form-check-label">Female</label>
+                    </div> -->
